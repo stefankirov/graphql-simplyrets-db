@@ -1,0 +1,30 @@
+{
+  "name": "senior-backend-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "^14"
+  },
+  "scripts": {
+    "test": "jest",
+    "start:app": "node index.js",
+    "start:db": "node database.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "3.5.0",
+    "axios": "^0.24.0",
+    "express": "4.17.1",
+    "graphql": "^16.0.1",
+    "jest": "27.3.1",
+    "mongodb": "4.1.4",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "8.0.1",
+    "mongodb-memory-server-core": "8.0.2",
+    "mongodb-memory-server-global": "8.0.0"
+  }
+}
