@@ -5,13 +5,16 @@ Hi There!
 I've submitted the following folders/files:
 
 components -> simplyRETS.js - this is where I keep the third party API calls and connections
-middleware -> auth.js - the simple authentication middleware to get user by token. Ofcourse, this is for testing purposes and ideally we'd like to use JWT at minimum and a secret. 
+
+middleware -> auth.js - the simple authentication middleware to get user by token. This is for testing purposes and ideally we'd like to use JWT at minimum and a secret. 
+
 models - the Mongoose models. Decided to use Mongoose so we have consistent data models. 
+
 schema -> resolvers.js - the Apollo resolvers, the business logic and all resolvers are here in one file since the task is small
 
-- AddFavoriteListing - for each request to this endpoint/resolver we upsert {listingId, count} to MongoDB (increment count if listingId exists). 
+- addFavoriteListing - for each request to this endpoint/resolver we upsert {listingId, count} to MongoDB (increment count if listingId exists). 
 
-- GetListings - Here we call the SimplyRETS API for /properties. Then we merge the results with the "favoriteCount" from Mongo. I decided to get all the Mongo counts at once, calling mongo with the array of "listings" that I got from the SimplyRETS response. This way I limit my mongoDB calls to only 1, and do the merging with a couple of loops on the server side. 
+- getListings - Here we call the SimplyRETS API for /properties. Then we merge the results with the "favoriteCount" from Mongo. I decided to get all the Mongo counts at once, calling mongo with the array of "listings" that I got from the SimplyRETS response. This way I limit my mongoDB calls to only 1, and do the merging with a couple of loops on the server side. 
 
 types - the provided types schema, added here FavoriteListing, the Query and the Mutation. 
 
@@ -22,7 +25,7 @@ index.js - the index file, basic server setup with Express and Apollo, waiting f
 
 # Getting started
 
-With Node LTS (>14) installed, run the following commands in order:
+With Node LTS (>=14) installed, run the following commands in order:
 
 ```sh
 yarn install
@@ -39,9 +42,9 @@ Added address fields in the query
 
 ```
 query {
-  listings(city: "San Francisco") {
+  listings(city: "Oak Ridge") {
     listingId
-    favoriteCount // coming from MongoDB, everything else comes from SimplyRETS
+    favoriteCount 
     listPrice
     property {
       area
@@ -70,16 +73,13 @@ mutation Mutation($listingId: String!) {
 
 ## Testing
 
-To test run:
-```yarn test
+To test, run:
+
+```
+yarn test
 ```
 
 Testing is basic and only using mocked Apollo Server and resolvers. 
-
-# Submission
-
-Once you are satisfied with your assignment, please publish your code (ignore the `node_modules` folder) to a Git repository and send the repository link to `eng.assignment@sideinc.com`.  
-
 
 
 
